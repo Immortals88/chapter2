@@ -34,9 +34,9 @@ public class myAdapter extends RecyclerView.Adapter {
 
         int type = getItemViewType(position);
         if (type == TYPE_TEXT) {
-            ((DemoViewHolder)holder).bind(mList.get(position));
+            ((DemoViewHolder)holder).bind(mList.get(position),position+1);
         } else if (type == TYPE_IMAGE) {
-            ((FigViewHolder) holder).bind(mList.get(position));
+            ((FigViewHolder) holder).bind(mList.get(position), position+1);
         }
     }
 

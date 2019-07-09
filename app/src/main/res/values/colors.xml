@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="background">#161824</color>
     <color name="no">#99ffffff</color>
+    <color name="noHot">#e6face15</color>
     <color name="title">#e6ffffff</color>
     <color name="hotValue">#7fffffff</color>
 </resources>

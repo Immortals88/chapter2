@@ -9,6 +9,13 @@
     android:background="@color/background"
     android:padding="20dp">
 
+    <TextView
+        android:id="@+id/tv_fig_rank"
+        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:textSize="15sp"
+        android:textColor="@color/no" />
+
     <ImageView
         android:id="@+id/iv_image"
         android:layout_width="160dp"
