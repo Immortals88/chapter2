@@ -20,4 +20,5 @@ class DemoViewHolder extends RecyclerView.ViewHolder {
         }
         rank.setText(position+".");
     }
+
 }

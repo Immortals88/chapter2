@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +14,17 @@ import java.util.List;
 public class myAdapter extends RecyclerView.Adapter {
     public static final int TYPE_TEXT = 0;
     public static final int TYPE_IMAGE = 1;
+
     private List<Data> mList;
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener=onItemClickListener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClickListener(View view, int position);
+    }
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,7 +41,7 @@ public class myAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
 
         int type = getItemViewType(position);
         if (type == TYPE_TEXT) {
@@ -38,6 +49,17 @@ public class myAdapter extends RecyclerView.Adapter {
         } else if (type == TYPE_IMAGE) {
             ((FigViewHolder) holder).bind(mList.get(position), position+1);
         }
+        if (onItemClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = holder.getLayoutPosition();
+                    onItemClickListener.onItemClickListener(holder.itemView, pos);
+                }
+            });
+        }
+
+
     }
 
     @Override
@@ -53,5 +75,7 @@ public class myAdapter extends RecyclerView.Adapter {
         }
         return TYPE_TEXT;
     }
+
+
 }
 
